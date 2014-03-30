@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<!--<ul class="nav nav-pills pull-right">
+  <li><a href="#">Approve</a></li>
+  <li class="dropdown">
+    -<a class="dropdown-toggle" data-toggle="dropdown" href="#">Steps<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Event Info', edit_event_path(session[:event_id]) %></li>
+      <li><%= link_to 'Image', edit_event_step_path(:image) %></li>
+    </ul>
+  </li>
+</ul>-->
+
+<% @event.event_timings.each do |event_timing| %>
+<p>
+  <b>Event Title:</b>
+  <%= @event.title %>
+</p>
+<p>
+  <b>Event Description</b>
+  <%= @event.description %>
+</p>
+<p>
+  <b>Event Price:</b>
+  <%= @event.price %>
+</p>
+<p>
+  <b>Event Address:</b>
+  <%= @event.eventaddress %>
+</p>
+<p>
+  <b>Event Telephone Number:</b>
+  <%= @event.telNo %>
+</p>
+<p>
+  <b>Event Check In Time:</b>
+  <%= event_timing.time %>
+</p>
+<p>
+  <b>Event Date:</b>
+  <%= event_timing.date %>
+</p>
+<p>
+  <b>Event Location:</b>
+  <%= @event.venue %>
+</p>
+<% if !@event.link.blank? %>
+<p>
+  <b>Event Location URL:</b>
+  <%= link_to "#{@event.link}", @event.link %>
+</p>
+<% end %>
+<p>
+  <b>Event Image</b>
+  <%= image_tag (@event.image_url(:main).blank?) ? default_event_image : @event.image_url(:main) %>
+</p>
+
+<% if user_signed_in? && current_user.admin? || current_user == @event.user %>
+  <%= link_to 'Edit', edit_event_path(@event) %> |
+<% end %>
+<%= link_to 'Back', events_path %>
+
+<% end %>

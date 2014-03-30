@@ -1,0 +1,40 @@
+<div class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				<h1>Welcome.</h1>
+				<p>Birmingham Events is the Magic City's premier event app for iPhone and Android devices.</p>
+				<p>List your event on Birmingham Events now! It's costs less than one dollar ($0.99 to be specific) and is a simple five step process:</p>
+					<ol>
+						<li>Sign up on Birmingham Events Web App.</li>
+						<li>Enter your personal contact information.</li>
+						<li>Enter your event specific information.</li>
+						<li>Upload your event image.</li>
+						<li>Pay for your event (only $0.99!)</li>
+					</ol>
+				<br/>
+				<%= link_to "Get Started Now!", new_user_registration_path, :class => "btn btn-primary" %>
+			</div><!-- end "col-md-5" -->
+			<div class="col-md-7">
+				<%= image_tag ("iTunesArtwork.png"), class: "img-responsive" %>
+			</div><!-- end "co-md-7" -->
+		</div><!-- end "row" -->
+	</div><!-- end "container" -->
+</div><!-- end "jumbotron" -->
+<div class="row">
+	<div class="col-lg-4">
+		<h2>Event Calendar</h2>
+		<p>Whether you are searching for fresh fruit, a theatre performance, or a concert, Birmingham Events will connect you to your choice.</p>
+		<%= link_to "More &raquo;".html_safe, "http://www.bham.al", class: "btn btn-default" %>
+	</div>
+	<div class="col-lg-4">
+		<h2>Location Based</h2>
+		<p>If you don't know your way around town, no problem. Use the maps feature built into the app and find your way to venues all over the area.</p>
+		<%= link_to "More &raquo;".html_safe, "http://www.bham.al", class: "btn btn-default" %>
+	</div>
+	<div class="col-lg-4">
+		<h2>Easy to use</h2>
+		<p>Clean modern, simple to navigate interface, makes this app perfect for everyone.</p>
+		<%= link_to "More &raquo;".html_safe, "http://www.bham.al", class: "btn btn-default" %>
+	</div>
+</div><!-- end "row" -->

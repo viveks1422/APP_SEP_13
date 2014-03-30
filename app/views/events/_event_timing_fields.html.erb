@@ -1,0 +1,19 @@
+<div class="nested-fields">
+	<div class="row">
+		<div class="col-lg-5">
+			<%= f.input :date, label: "Event Date:", input_html: { class: "bootstrap-datepicker form-control" } %>
+		</div>
+
+		<div class="col-lg-2">
+			<%= f.label :time, "Event Time:" %>
+			<div class="input-group bootstrap-timepicker">
+				<%= f.text_field :time, id: "timepicker1", class: "form-control" %>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+			</div>
+		</div>
+		<div class="col-lg-2">
+			<label style="height: 20px;"></label><br/>
+			<%= link_to_remove_association '', f, class: "glyphicon glyphicon-minus-sign hide", id: "removeBtn" %>
+		</div>
+	</div><br/>
+</div>

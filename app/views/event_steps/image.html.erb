@@ -1,0 +1,23 @@
+<ul class="breadcrumb">
+	<li><%= link_to "Event Information", previous_wizard_path %></li>
+	<li class="active">Image Upload</a></li>
+</ul>
+
+<%= simple_form_for @event, :html => {:class => 'form-inline'}, url: wizard_path, :method => :put do |f| %>
+	<%= render "event_errors" %>
+
+	<% if @event.image? %>
+		<%= f.label "Current event image:" %>
+		<label>
+	      <%= f.check_box :remove_image %>
+	      Remove image
+	    </label>
+	<% end %>
+	<%= image_tag(@event.image_url(:main)) if @event.image? %>
+	
+
+	<%= f.input :image, :hint => "Optimal size is 640x380px" %><br/>
+	<%= f.input :remote_image_url, label: "or image URL", input_html: {class: "form-control"} %>
+	<br/><br/>
+	<%= f.button :submit, 'Continue', class: "btn btn-primary" %> or <%= link_to "Previous step", previous_wizard_path %>
+<% end %>

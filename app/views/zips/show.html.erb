@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Zip name:</b>
+  <%= @zip.zip_name %>
+</p>
+
+<p>
+  <b>Zip code:</b>
+  <%= @zip.zip_code %>
+</p>
+
+
+<%= link_to 'Edit', edit_zip_path(@zip) %> |
+<%= link_to 'Back', zips_path %>

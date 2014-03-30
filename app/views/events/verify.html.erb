@@ -1,0 +1,63 @@
+<ul class="breadcrumb">
+  <li><a href="#">Event Information</a></li>
+  <li><a href="#">Image Upload</a></li>
+  <li class="active">Verify Details</li>
+</ul>
+
+<p id="notice"><%= notice %></p>
+
+<% @event.event_timings.each do |event_timing| %>
+
+<p>
+  <b>Event Title:</b>
+  <%= @event.title %>
+</p>
+<p>
+  <b>Event Description</b>
+  <%= @event.description %>
+</p>
+<p>
+  <b>Event Price:</b>
+  <%= @event.price %>
+</p>
+<p>
+  <b>Event Address:</b>
+  <%= @event.eventaddress %>
+</p>
+<p>
+  <b>Event Telephone Number:</b>
+  <%= @event.telNo %>
+</p>
+<p>
+  <b>Event Time:</b>
+  <%= event_timing.time %>
+</p>
+<p>
+  <b>Event Date:</b>
+  <%= event_timing.date %>
+</p>
+<p>
+  <b>Event Location:</b>
+  <%= @event.venue %>
+</p>
+<% if !@event.link.blank? %>
+<p>
+  <b>Event Location URL:</b>
+  <%= link_to "#{@event.link}", @event.link %>
+</p>
+<% end %>
+<p>
+  <b>Event Image</b>
+  <%= image_tag (@event.image_url(:main).blank?) ? default_event_image : @event.image_url(:main) %>
+</p>
+
+<%= link_to "Confirm and Pay", new_charge_path(), class: "btn btn-success" %>
+
+<!--<% if @event.charge == "0" %>
+  <%= link_to "Confirm and Pay", new_charge_path(), class: "btn btn-success" %>
+<% else %>
+  <%= link_to "Save", root_path, class: "btn btn-success" %>
+<% end %>-->
+<%= link_to 'Back', events_path %>
+
+<% end %>

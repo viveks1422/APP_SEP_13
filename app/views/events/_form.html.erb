@@ -1,0 +1,34 @@
+<%= simple_form_for(@event, :html => {class: 'form-horizontal', autocomplete: "off"}) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :title, label: 'Event Name:', input_html: {class: "form-control"} %><br/>
+  
+  <div id="eventtype" class="btn-group" data-toggle="buttons">
+    <label for="single" class="btn btn-primary">
+      <%= f.radio_button :eventtype, "single", :id => "single", :style => "display:none;" %>Single
+    </label>
+    <label for="multiple" class="btn btn-primary">
+      <%= f.radio_button :eventtype, "multiple", :id => "multiple", :style =>"display:none;" %>Multiple
+    </label>
+  </div><br/>
+
+  <div id="event_timings" class="hide">
+    <div class="links pull-right">
+        <%= link_to_add_association raw('<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add'), f, :event_timings, :render_options => {:wrapper => 'bootstrap'}, :data => {"association-insertion-method" => "after" }, class: "btn btn-default", id: "addBtn" %>
+    </div><br/>
+    <%= f.simple_fields_for :event_timings do |event_timings| %>
+      <%= render 'events/event_timing_fields', :f => event_timings %>
+    <% end %>
+  </div><br/>
+
+  <%= f.button :submit, 'Continue', class: "btn btn-primary" %>
+<% end %>
+
+<script>
+	$(document).ready(function(){
+		$(".btn-group > label.btn-primary").click(function(){
+			var theValue = $(this).attr("for");
+			$("#"+theValue).prop("checked",true);
+		});
+	});
+
+</script>

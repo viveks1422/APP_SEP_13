@@ -1,0 +1,19 @@
+<ul class="breadcrumb">
+	<li class="active">Event Information</li>
+</ul>
+
+<%= render "event_errors" %>
+	
+<%= simple_form_for @event, :validate => true, :html => {:class => 'form-horizontal'}, url: wizard_path, :html => {:autocomplete => "off"}, :method => :put do |f| %>
+	<%= f.input :description, label: 'Event Description:', input_html: {class: "form-control"} %><br/>
+	<%= f.input :price, label: 'Price Per Ticket:', placeholder: '0.00', input_html: {class: "form-control"} %><br/>
+	<%= f.input :address, label: 'Event Location Street Address:', input_html: {class: "form-control"}%><br/>
+	<%= f.input :zip_code, collection: Zip.all, label_method: :zip_code, value_method: :zip_code, label: "Zip Code:", input_html: {class: "chosen-select"} %>
+		<span class="help-block">Need us to add a zip code? Email us <%= mail_to "hello@bham.al", nil, subject: "Add my zip code to Bham Events please :)" %> and we will look into it!</span>	
+	<%= f.input :telNo, label: 'Event Telephone Number:', input_html: {class: "bfh-phone form-control", data: {country: "US"}}, placeholder: '(205) 123-4567', :hint => "This WILL be public." %>
+	<%= f.input :catId, collection: Category.all, label_method: :name, value_method: :catId, label: "Category:", input_html: {class: "chosen-select"} %><br/>
+	<%= f.input :venue, input_html: {class: "form-control"} %><br/>
+	<%= f.input :link, :hint => "Direct link to event page", input_html: {class: "form-control"}%>
+	<br/>
+	<%= f.button :submit, 'Continue', class: "btn btn-primary" %>
+<% end %>
